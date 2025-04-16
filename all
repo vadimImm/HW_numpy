@@ -62,3 +62,29 @@ def my_reshape(arr, new_shape):
 A = np.array([[2, 4, 6], [4, 8, 10]])
 print(my_reshape(A, (6, 1)))
 print(my_reshape(A, (4, 2)))
+
+                                                                               ####################
+
+#Создайте (любым способом) маленький датафрейм, состоящий из двух столбцов:
+#fh_type: тип страны;
+#count: число стран данного типа.
+#Постройте, используя полученный датафрейм, столбиковую диаграмму (barplot),
+#опираясь на эту документацию. Чтобы увидеть график явно, прямо в текущем ноутбуке,
+#допишите в начале ячейки с кодом для графика следующую строку %matplotlib inline
+
+data = {'fh_type': ['north', 'south', 'middle'],
+'count': [20, 30, 100]}
+df = pd.DataFrame(data)
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.figure(figsize=(10, 6))
+plt.bar(df['fh_type'], df['count'], color='skyblue')
+plt.title('Распределение стран по типам')
+plt.xlabel('Тип страны')
+plt.ylabel('Количество стран')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+for index, value in enumerate(df['count']):
+    plt.text(index, value + 1, str(value), ha='center')
+
+
+plt.show()
